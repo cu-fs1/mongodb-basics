@@ -64,35 +64,38 @@ Check:
 
 ```bash
 node -v
-npm -v
+pnpm -v
 ```
 
 ### Step 2: Create Node Project
 
 ```bash
-npm init -y
+pnpm init
 ```
 
 ### Step 3: Install Dependencies
 
 ```bash
-npm install mongoose dotenv
+pnpm add mongoose dotenv
 ```
 
-### Step 4: Choose MongoDB Source
+### Step 4: Host on MongoDB Atlas (Recommended)
 
-Option A: Local MongoDB Community Server
+Use **MongoDB Atlas** — the official cloud-hosted MongoDB service. It has a free tier and requires no local installation.
 
-1. Install MongoDB Community Server.
-2. Start MongoDB service.
-3. Use URI like `mongodb://127.0.0.1:27017/school`.
+1. Go to [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas) and sign up.
+2. Create a free **M0 cluster** (free forever, no credit card needed).
+3. Under **Database Access**, create a database user with a username and password.
+4. Under **Network Access**, add your current IP address (or `0.0.0.0/0` for development).
+5. Go to **Clusters → Connect → Drivers**, select Node.js, and copy the connection string.
 
-Option B: MongoDB Atlas (cloud)
+The connection string looks like:
 
-1. Create free cluster.
-2. Create DB user.
-3. Whitelist your IP.
-4. Copy connection string.
+```
+mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/<dbname>?retryWrites=true&w=majority
+```
+
+Replace `<username>`, `<password>`, and `<dbname>` with your values.
 
 ### Step 5: Add Environment Variable
 
@@ -422,7 +425,7 @@ If you will use **Mongoose** with Node.js, start like this.
 Install:
 
 ```bash
-npm install mongoose
+pnpm add mongoose
 ```
 
 ### Connect to MongoDB
